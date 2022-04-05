@@ -11,11 +11,12 @@ app.use((req, res, next) => {
 });
 
 app.use(express.static(wwwDir));
+app.use(serveIndex(wwwDir, { icons: true }));
 
 // app.get("/*", (req, res) => {
 //   res.send("Hello World!");
 // });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Example app listening on ports ${port}`);
 });
