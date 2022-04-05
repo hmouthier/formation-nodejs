@@ -1,5 +1,21 @@
-console.log("Hello World!!");
+const express = require("express");
+const serveIndex = require("serve-index");
 
-if (1 < 2) {
-  toto = 5;
-}
+const app = express();
+const port = 3000;
+const wwwDir = ".";
+
+app.use((req, res, next) => {
+  console.log("req : ", req.url);
+  next();
+});
+
+app.use(express.static(wwwDir));
+
+// app.get("/*", (req, res) => {
+//   res.send("Hello World!");
+// });
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
