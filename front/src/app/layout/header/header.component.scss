@@ -1,0 +1,27 @@
+header {
+  background: #1abc9c;
+  color: white;
+  font-size: 2em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  a {
+    display: flex;
+    align-items: center;
+    color: inherit;
+    text-decoration: inherit;
+
+    &:hover {
+      text-decoration: underline;
+    }
+    span {
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+  }
+}
+
+header img {
+  width: 6em;
+  height: 6em;
+}
