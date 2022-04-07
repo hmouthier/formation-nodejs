@@ -11,9 +11,9 @@ app.use((req, res, next) => {
   console.log("req : ", req.url);
   next();
 });
+app.use(cors());
 
 app.use("/api", api);
-app.use(cors());
 
 app.use(express.static(wwwDir));
 app.use(serveIndex(wwwDir, { icons: true }));
