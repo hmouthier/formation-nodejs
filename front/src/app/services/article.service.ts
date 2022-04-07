@@ -11,6 +11,16 @@ export class ArticleService {
     this.retrieveAll();
   }
   retrieveAll() {
-    this.http.get('http://localhost:3000/api/articles');
+    this.http.get<Article[]>('http://localhost:3000/api/articles').subscribe({
+      next: (articles) => {
+        this.articles = this.articles;
+      },
+      error: (err) => {
+        console.log('err : ', err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
   }
 }

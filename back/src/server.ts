@@ -1,9 +1,10 @@
-import express  from "express";
+import express from "express";
 import serveIndex from "serve-index";
-import { api } from './api';
+import { api } from "./api";
+import cors from "cors";
 
 const app = express();
-const port = +process.env.PORT  || 1000;
+const port = +process.env.PORT || 1000;
 const wwwDir = "./public";
 
 app.use((req, res, next) => {
@@ -11,7 +12,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api",api);
+app.use("/api", api);
+app.use(cors());
 
 app.use(express.static(wwwDir));
 app.use(serveIndex(wwwDir, { icons: true }));
