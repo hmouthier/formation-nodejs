@@ -1,10 +1,9 @@
-.content {
+form {
   display: flex;
   flex-flow: column;
-  gap: 2em;
-}
-
-nav {
-  display: flex;
   gap: 0.5em;
+
+  button {
+    margin-top: 2em;
+  }
 }
