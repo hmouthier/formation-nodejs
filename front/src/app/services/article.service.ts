@@ -26,8 +26,6 @@ export class ArticleService {
     });
   }
   async add(article: Article) {
-    this.articles.push(article);
-
     await lastValueFrom(
       this.http.post<Article[]>('http://localhost:3000/api/articles', article)
     );
