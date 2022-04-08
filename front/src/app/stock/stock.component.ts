@@ -21,9 +21,12 @@ export class StockComponent implements OnInit {
     }
     this.selectedItems.add(a);
   }
+
   remove() {
-    this.articleService.remove(this.selectedItems);
-    this.selectedItems.clear();
-    this.articleService.retrieveAll();
+    (async () => {
+      await this.articleService.remove(this.selectedItems);
+      this.selectedItems.clear();
+      this.articleService.retrieveAll();
+    })();
   }
 }
