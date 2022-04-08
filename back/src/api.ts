@@ -1,8 +1,14 @@
 import { Router, json } from "express";
 import { Article } from "./interfaces/Article";
 import { FileArticleService } from "./services/FileArticles.service";
+import { MongoArticleService } from "./services/MongoArticles.service";
+import { validation } from "./validation";
+import {
+  ArticleCreateModel,
+  ArticleDeleteModel,
+} from "./validation/article.model";
 
-const articleService = new FileArticleService();
+const articleService = new MongoArticleService();
 const app = Router();
 
 app.use(json());
@@ -19,7 +25,7 @@ app.get("/articles", (req, res) => {
   })();
 });
 
-app.post("/articles", (req, res) => {
+app.post("/articles", validation(ArticleCreateModel), (req, res) => {
   (async () => {
     try {
       const article: Article = req.body;
@@ -33,7 +39,7 @@ app.post("/articles", (req, res) => {
   })();
 });
 
-app.delete("/articles", (req, res) => {
+app.delete("/articles", validation(ArticleDeleteModel), (req, res) => {
   (async () => {
     try {
       const ids: string[] = req.body;
