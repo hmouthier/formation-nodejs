@@ -1,8 +1,13 @@
 import assert from "assert";
-describe("Array", function () {
-  describe("#indexOf()", function () {
-    it("should return -1 when the value is not present", function () {
-      assert.equal([1, 2, 3].indexOf(4), -1);
+import { WebServer } from "../WebServer";
+
+describe("Stock", function () {
+  describe("server", function () {
+    it("should start and stop", async () => {
+      process.env.PORT = "3232";
+      const server = new WebServer();
+      server.start();
+      server.stop();
     });
   });
 });
